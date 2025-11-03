@@ -2,6 +2,7 @@ import os
 import customtkinter as ctk
 from PIL import Image
 from tkinter import filedialog , messagebox
+import webbrowser
 
 class SteganogeraphyApp:
     def __init__(self, root):
@@ -23,6 +24,7 @@ class SteganogeraphyApp:
 
         self.setup_ui()
 
+
     def setup_ui(self):
 
         title = ctk.CTkLabel(
@@ -43,6 +45,8 @@ class SteganogeraphyApp:
 
         self.setup_encode_tab()
         self.setup_decode_tab()
+
+        self.setup_footer()
 
     def setup_encode_tab(self):
 
@@ -146,6 +150,30 @@ class SteganogeraphyApp:
             height=200 
         )
         self.text_output.pack(padx=20, pady=5)
+
+    def setup_footer(self):
+        """
+        Create footer section with author information at the bottom
+        """
+        footer_frame = ctk.CTkFrame(self.root, fg_color="transparent")
+        footer_frame.pack(side="bottom", pady=10)
+        
+        author_label = ctk.CTkLabel(
+            footer_frame,
+            text="Created by Ali Morsali | © 2025",  
+            font=ctk.CTkFont(size=11),
+            text_color="gray",
+            cursor= "hand2"  
+        )
+        def on_enter(e):
+            author_label.configure(text_color= "#1E90FF")
+        
+        def on_leave(e):
+            author_label.configure(text_color= "gray")
+        author_label.pack()
+        author_label.bind("<Enter>", on_enter)
+        author_label.bind("<Leave>", on_leave)
+        author_label.bind("<Button-1>", lambda e: webbrowser.open("https://github.com/kindterrorist"))
 
     def select_encode_image(self):
         """
