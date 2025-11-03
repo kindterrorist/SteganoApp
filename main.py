@@ -4,6 +4,7 @@ from PIL import Image
 from tkinter import filedialog , messagebox
 import webbrowser
 
+VERSION = "1.0.0"
 class SteganogeraphyApp:
     def __init__(self, root):
         """
@@ -13,7 +14,7 @@ class SteganogeraphyApp:
         root: The main CTk window object
         """
         self.root = root 
-        self.root.title("Image Steganography")
+        self.root.title("SteganoApp")
         self.root.geometry("700x600")
 
         ctk.set_appearance_mode("system")
@@ -29,7 +30,7 @@ class SteganogeraphyApp:
 
         title = ctk.CTkLabel(
             self.root, 
-            text= "Steganography App",
+            text= f"SteganoApp v{VERSION}",
             font= ctk.CTkFont(size= 24, weight= "bold")
         )
         title.pack(pady= 20)
